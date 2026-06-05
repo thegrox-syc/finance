@@ -707,7 +707,8 @@ async function loadRemoteData() {
     }
   } catch (err) {
     console.error(err);
-    setSyncStatus('Error de sincronización remota', 'danger');
+    const message = err && err.message ? err.message : 'Error de sincronización remota';
+    setSyncStatus('Error de sincronización remota: ' + message, 'danger');
   }
 }
 
@@ -734,7 +735,8 @@ async function syncNow() {
     setSyncStatus('Sincronización exitosa', 'success');
   } catch (err) {
     console.error(err);
-    setSyncStatus('Fallo la sincronización remota', 'danger');
+    const message = err && err.message ? err.message : 'Fallo la sincronización remota';
+    setSyncStatus('Fallo la sincronización remota: ' + message, 'danger');
   }
 }
 
